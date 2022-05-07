@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Ingrese su nombre" [(ngModel)]="user.name">
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="margin-left: 30px;">
+        <mat-label>Apellido</mat-label>
+        <input matInput placeholder="Ingrese su apellido" [(ngModel)]="user.surname">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="Ingrese su e-mail" [(ngModel)]="user.email">
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="margin-left: 30px;">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput placeholder="Ingrese su contraseña" [(ngModel)]="user.password">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>DNI</mat-label>
+        <input matInput placeholder="Ingrese su DNI" [(ngModel)]="user.dni">
+    </mat-form-field><br>
+    <mat-form-field appearance="fill" style="width: 200px;">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="user.birthdate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field><br><br>
+    <button mat-raised-button style="margin-left: 115px;"
+        [disabled]="!user.name || !user.surname || !user.email || !user.password || !user.dni || !user.birthdate">Agregar</button>
+    <button mat-raised-button color="warn" mat-dialog-close style="margin-left: 20px;">Cancelar</button>
+</mat-card>

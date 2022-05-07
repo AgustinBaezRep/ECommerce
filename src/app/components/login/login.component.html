@@ -1,0 +1,22 @@
+<div class="container">
+    <img [src]="img">
+    <h1>L o g i n</h1>
+    <mat-form-field appearance="fill" class="ancho">
+        <mat-label>Usuario</mat-label>
+        <input matInput type="text" [(ngModel)]="user.email" autocomplete="off">
+        <button *ngIf="user.email" matSuffix mat-icon-button aria-label="Clear" (click)="user.email=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="ancho">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" [(ngModel)]="user.password" autocomplete="off">
+        <button *ngIf="user.password" matSuffix mat-icon-button aria-label="Clear" (click)="user.password=''">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <h3 (click)="passwordRecovery()">¿Ha olvidado su contraseña?</h3>
+    <h3 (click)="createUser()">Crear usuario</h3>
+    <button mat-raised-button color="primary" class="boton" (click)="Ingresar()"
+        [disabled]="!user.email || !user.password">Ingresar</button>
+</div>
