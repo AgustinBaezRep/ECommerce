@@ -1,15 +1,40 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
+    <button mat-icon-button routerLink="/products/home">
+      <mat-icon>home</mat-icon>
     </button>
     <div style="flex: 1 1 auto;"></div>
-    <span>My App</span>
+    <div class="menue-buttons" *ngFor="let menue of [1,2,3,4,5]">
+      <button mat-button [matMenuTriggerFor]="animals">Animal index</button>
+      <mat-menu #animals="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
+      </mat-menu>
+      <mat-menu #vertebrates="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+        <button mat-menu-item>Fishes</button>
+        <button mat-menu-item>Amphibians</button>
+      </mat-menu>
+      <mat-menu #reptiles="matMenu">
+        <button mat-menu-item>Banded Day Gecko</button>
+        <button mat-menu-item>Banded Gila Monster</button>
+        <button mat-menu-item>Black Tree Monitor</button>
+        <button mat-menu-item>Blue Spiny Lizard</button>
+        <button mat-menu-item [disabled]="menue === 1">Velociraptor</button>
+      </mat-menu>
+    </div>
     <div style="flex: 1 1 auto;"></div>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
+    <mat-form-field style="width: 230px; margin-bottom: 10px;">
+      <input matInput type="text" autocomplete="off" placeholder="Buscar">
+      <button matSuffix mat-icon-button aria-label="Clear">
+          <mat-icon>search</mat-icon>
+      </button>
+  </mat-form-field>
+    <button mat-icon-button (click)="addMessage()">
+      <mat-icon [matBadge]="cantMessage" matBadgeColor="warn" matBadgeSize="medium" style="margin-left: 10px;">mail</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+    <button mat-icon-button (click)="addProduct()" style="margin-left: 10px;">
+      <mat-icon [matBadge]="cantProducts" matBadgeColor="warn" matBadgeSize="medium">shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button style="margin-left: 10px;" (click)="logOut()">
+      <mat-icon>logout</mat-icon>
     </button>
 </mat-toolbar>
